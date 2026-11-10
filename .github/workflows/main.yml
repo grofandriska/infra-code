@@ -1,0 +1,15 @@
+# Step 5. Runs on every push to main: do it.
+name: Apply
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: TODO
+        run: |
+          echo "TODO: log in to AWS (OIDC)"
+          echo "TODO: terraform fmt -check, init, validate, plan, apply without asking"
