@@ -1,5 +1,4 @@
-# Step 5. Runs on every pull request to main: is the change valid, and what would it do?
-name: Plan
+name: Terraform Plan
 
 on:
   pull_request:
@@ -8,8 +7,30 @@ on:
 jobs:
   plan:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - name: TODO
-        run: |
-          echo "TODO: log in to AWS (OIDC)"
-          echo "TODO: terraform fmt -check, init, validate, plan"
+      - name: CHECKOUT
+        uses: actions/checkout@v7
+
+      - name: AWS LOGIN 
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: SETUP TERRAFORM
+        uses: hashicorp/setup-terraform@v4
+
+      - name: TERRAFORM FMT
+        run: terraform fmt -check -recursive
+            
+      - name: TERRAFORM INIT 
+        run: terraform init
+
+      - name: TERRAFORM VALIDATE
+        run: terraform validate
+
+      - name: TERRAFORM PLAN
+        run: terraform plan

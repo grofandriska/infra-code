@@ -18,7 +18,7 @@ data "aws_iam_policy_document" "service_trust" {
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:grofandriska/service-code:ref:refs/heads/main"]
+      values   = ["repo:grofandriska@64146340/service-code@1452916862:ref:refs/heads/main"]
     }
   }
 }
@@ -46,8 +46,8 @@ data "aws_iam_policy_document" "infra_trust" {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
       values = [
-        "repo:grofandriska/infra-code:pull_request",
-      "repo:grofandriska/infra-code:ref:refs/heads/main", ]
+        "repo:grofandriska@64146340/infra-code@1452916127:pull_request",
+      "repo:grofandriska@64146340/infra-code@1452916127:ref:refs/heads/main", ]
     }
   }
 }
