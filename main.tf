@@ -18,7 +18,7 @@ terraform {
   backend "s3" {
     bucket       = "andras-csk-w10-tfstate"
     key          = "infra-code/terraform.tfstate"
-    region       = var.region
+    region       = "eu-west-1"
     use_lockfile = true
   }
 }
