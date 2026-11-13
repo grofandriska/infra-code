@@ -47,8 +47,7 @@ data "aws_iam_policy_document" "infra_trust" {
       variable = "token.actions.githubusercontent.com:sub"
       values = [
         "repo:grofandriska/infra-code:pull_request",
-        "repo:grofandriska/infra-code:ref:refs/heads/main",
-        ] 
+      "repo:grofandriska/infra-code:ref:refs/heads/main", ]
     }
   }
 }
