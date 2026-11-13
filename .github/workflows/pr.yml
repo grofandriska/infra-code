@@ -1,4 +1,4 @@
-name: Terraform init to apply
+name: Terraform init
 
 on:
   pull_request:
@@ -36,6 +36,3 @@ jobs:
 
       - name: TERRAFORM PLAN
         run: terraform plan
-
-      - name: TERRAFORM APPLY
-        run: terraform apply
